@@ -1,31 +1,32 @@
 {% extends 'base.html' %}
-{% load leaflet_tags %}
+{% load leaflet_tags staticfiles %}
 
 {% load my_tags %}
 
+{% block page_title %}
+    Stop {{ object.name }}
+{% endblock %}
+
 {% block content %}
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-4 col-xs-12">
             <ul class="list-group">
                 <li class="list-group-item">{{ object | u }}</li>
                 <li class="list-group-item">ID: {{ object.id }}</li>
                 <li class="list-group-item">GTFS ID: {{ object.gtfs_stop_id }}</li>
             </ul>
         </div>
-        <div class="col-sm-6">
-            <div>
-             {% leaflet_map "stop_map" callback="init_stop_map" %}
+        <div class="col-md-8 col-xs-12">
+            <div class="bordered same-y">
+                {% leaflet_map "stop_map" callback="init_stop_map" %}
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block scripts %}
+    <script src="{% static 'js/map_utils.js' %}"></script>
     <script>
-    function init_stop_map(map, options) {
-        var latlng = [{{ object.point.y }}, {{ object.point.x }}];
-        L.marker(latlng).addTo(map);
-        map.setView(latlng, 16);
-    }
+    var init_stop_map = init_point_factory({{ object.point.geojson | safe }});
     </script>
 {% endblock %}

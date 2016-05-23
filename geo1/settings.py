@@ -15,7 +15,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '&%#vfxuaac9tn0brjyhw0%pz6m!hs79=tytq%@gq76jf@md*^5'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -73,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'geo1.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -86,7 +83,6 @@ DATABASES = {
         'HOST': 'localhost',
     },
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -101,7 +97,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
@@ -109,3 +104,23 @@ STATIC_URL = '/static/'
 
 GPS_SRID = 4326
 
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (30, 29, 39, 33.5),
+    'TILES': [
+        ('OVI Satellite',
+         'http://maptile.maps.svc.ovi.com/maptiler/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8',
+         'OVI maps'),
+
+        ('OpenStreet map',
+         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+         'OpenStreet Map'),
+
+        ('MapQuest Open Aerial',
+         'http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
+         'MapQuest Open Aerial'),
+
+        ('Israel Hiking Trails',
+         'http://osm.org.il/IsraelHiking/Tiles/{z}/{x}/{y}.png',
+         'Israel Hiking Trails'),
+    ]
+}

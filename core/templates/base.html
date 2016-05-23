@@ -4,7 +4,11 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Stops</title>
+  <title>
+      {% block page_title %}
+      Stops
+      {% endblock %}
+  </title>
   <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}">
   {% leaflet_css %}
   <link rel="stylesheet" href="{% static 'style/my.css' %}">

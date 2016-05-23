@@ -9,6 +9,18 @@
     border: 1px black solid;
 }
 
+.bordered {
+    border: 1px black solid;
+}
+
 .buttons {
     margin-bottom: 10px;
+}
+
+.same-y {
+  height: 400px;
+}
+
+.same-y .leaflet-container-default {
+    height: 100%;
 }

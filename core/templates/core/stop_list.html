@@ -2,6 +2,7 @@
 
 {% load my_tags %}
 {% load leaflet_tags %}
+{% load staticfiles %}
 
 {% block content %}
     <h1 class="page-header">
@@ -11,7 +12,9 @@
     {% if sort_by == 'distance' %}
         <div class="row">
             <div class="col-sm-offset-2 col-sm-8 col-xs-12 col-xs-offset-0 current-location">
-                {% leaflet_map 'current' 'init_current_location_map' %}
+                <div class="same-y">
+                    {% leaflet_map 'current' 'init_current_location_map' %}
+                </div>
             </div>
         </div>
     {% endif %}
@@ -63,7 +66,10 @@
                     </ul>
                 </td>
                 {% with callback=stop|stop_map_init map_name=stop|map_name %}
-                <td>{% leaflet_map map_name callback=callback %}</td>
+                <td><div class="same-y">
+                    {% leaflet_map map_name callback=callback %}
+                    </div>
+                </td>
                 {% endwith %}
             </tr>
         {% endfor %}
@@ -73,20 +79,13 @@
 {% endblock %}
 
 {% block scripts %}
+    <script src="{% static 'js/map_utils.js' %}"></script>
     <script>
         {% for object in object_list %}
-            window.init_stop_map_{{ object.id }} = function(map, options) {
-                var latlng = [{{ object.point.y }}, {{ object.point.x }}];
-                L.marker(latlng).addTo(map);
-                map.setView(latlng, 16);
-            }
+            window.init_stop_map_{{ object.id }} = init_point_factory({{ object.point.geojson | safe }});
         {% endfor %}
         {% if sort_by == 'distance' %}
-            window.init_current_location_map = function(map, options) {
-                var latlng = [{{ location.y }}, {{ location.x }}];
-                L.marker(latlng).addTo(map);
-                map.setView(latlng, 16);
-            };
+            window.init_current_location_map = init_point_factory({{ location.geojson | safe}});
         {% endif %}
         $(function() {
              var position = null;
