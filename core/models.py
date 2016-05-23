@@ -6,6 +6,7 @@ class Stop(models.Model):
     gtfs_stop_id = models.IntegerField(db_index=True, unique=True)
     name = models.CharField(max_length=50)
     point = models.PointField()
+    parkings = models.GeometryCollectionField(null=True, blank=True)
 
     objects = models.GeoManager()
 

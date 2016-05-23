@@ -115,12 +115,12 @@ LEAFLET_CONFIG = {
          'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
          'OpenStreet Map'),
 
-        ('MapQuest Open Aerial',
-         'http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
-         'MapQuest Open Aerial'),
+        # ('MapQuest Open Aerial',
+        #  'http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
+        #  'MapQuest Open Aerial'),
 
         ('Israel Hiking Trails',
          'http://osm.org.il/IsraelHiking/Tiles/{z}/{x}/{y}.png',
          'Israel Hiking Trails'),
-    ]
+    ],
 }
