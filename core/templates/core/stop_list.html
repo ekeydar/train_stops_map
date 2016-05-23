@@ -10,32 +10,34 @@
     <h2>Sorted by {{ sort_by }}</h2>
     {% if sort_by == 'distance' %}
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-offset-2 col-sm-8 col-xs-12 col-xs-offset-0 current-location">
                 {% leaflet_map 'current' 'init_current_location_map' %}
             </div>
         </div>
     {% endif %}
     <div class="row">
         <div class="col-xs-12">
-            <button class="btn btn-primary" id="sort-north">
-                Sort North to South
-            </button>
-            <button class="btn btn-primary" id="sort-distance" disabled>
-                Sort by distance to current location
-            </button>
+            <div class="buttons">
+                <button class="btn btn-primary" id="sort-north">
+                    Sort North to South
+                </button>
+                <button class="btn btn-primary" id="sort-distance" disabled>
+                    Sort by distance to current location
+                </button>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
         <table class="table table-bordered">
             <tr>
-                <th  class=xol-xs-1">
+                <th  class=xol-sm-1">
                     #
                 </th>
-                <th class="col-xs-3">
+                <th class="col-sm-3">
                     Data
                 </th>
-                <th class="col-xs-8">
+                <th class="col-sm-8">
                     Point
                 </th>
             </tr>
