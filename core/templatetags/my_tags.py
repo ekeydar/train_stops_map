@@ -8,7 +8,7 @@ register = template.Library()
 
 @register.filter()
 def u(obj):
-    return mark_safe('<a href="{}">{}</a>'.format(obj.get_absolute_url(), unicode(obj)))
+    return mark_safe('<a href="{}">{}</a>'.format(obj.get_absolute_url(), str(obj)))
 
 
 @register.filter()
