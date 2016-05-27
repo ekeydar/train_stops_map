@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.contrib.gis.db.models.functions import Distance
+from django.contrib.gis.db.models.functions import Distance, Centroid
 from django.contrib.gis.geos import Point
+from django.db.models import Func
 from django.views.generic import ListView, DetailView
 
 from . import models
@@ -39,7 +40,7 @@ class StopList(ListView):
         if self.sort_by_distance:
             qs = qs.annotate(distance=Distance('point', self.location)).order_by('distance')
         elif self.sort_by_north:
-            qs = qs.order_by('point')
+            qs = qs.extra(select={'lat':'ST_Y(point)'}).order_by('-lat')
 
         #qs = qs[0:3]
         return qs
