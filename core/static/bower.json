@@ -1,0 +1,13 @@
+{
+  "name": "train_stops",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ekeydar/train_stops_map",
+  "authors": [
+    "Eran Keydar <ekeydar@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.4"
+  }
+}
